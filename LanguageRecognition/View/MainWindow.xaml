@@ -4,9 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageRecognition"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Language Recognize" Height="200" Width="500"
+        ResizeMode="NoResize"
+        Background="#e5e5e5">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Content="PREPARE" Grid.Column="0" Height="70" Margin="10" Command="{Binding ButtonPress}" CommandParameter="learn"/>
+        <Button Content="TRAIN" Grid.Column="1" Height="70" Margin="10" Command="{Binding ButtonPress}" CommandParameter="train"/>
+        <Button Content="RECOGNIZE" Grid.Column="2" Height="70" Margin="10" Command="{Binding ButtonPress}" CommandParameter="recognize"/>
     </Grid>
 </Window>
