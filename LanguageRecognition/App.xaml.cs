@@ -36,7 +36,7 @@ namespace LanguageRecognition
             //registers classes to take easy reference of them later
             //and dependency injection(class is injected)
             container.Register(Component.For<MainWindow>());
-            container.Register(Component.For<SamplesWindow>());
+            container.Register(Component.For<PrepareWindow>());
             container.Register(Component.For<LearnWindow>());
             container.Register(Component.For<RecognizeWindow>());
             container.Register(Component.For<MainWindowViewModel>());

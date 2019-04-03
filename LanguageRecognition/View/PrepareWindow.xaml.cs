@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace LanguageRecognition.View
 {
     /// <summary>
-    /// Interaction logic for SamplesWindow.xaml
+    /// Interaction logic for PrepareWindow.xaml
     /// </summary>
-    public partial class SamplesWindow : Window
+    public partial class PrepareWindow : Window
     {
-        public SamplesWindow()
+        public PrepareWindow()
         {
             InitializeComponent();
         }

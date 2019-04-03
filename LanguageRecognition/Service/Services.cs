@@ -20,7 +20,7 @@ namespace LanguageRecognition.Service
         #region Properties
 
         //This fields are needed to invoke .Show() for each window
-        private readonly SamplesWindow samplesWindow;
+        private readonly PrepareWindow prepareWindow;
         private readonly LearnWindow learnWindow;
         private readonly RecognizeWindow recognizeWindow;
 
@@ -28,9 +28,9 @@ namespace LanguageRecognition.Service
 
         #region Constructor
 
-        public Services(SamplesWindow samplesWindow, LearnWindow learnWindow, RecognizeWindow recognizeWindow)
+        public Services(PrepareWindow prepareWindow, LearnWindow learnWindow, RecognizeWindow recognizeWindow)
         {
-            this.samplesWindow = samplesWindow;
+            this.prepareWindow = prepareWindow;
             this.learnWindow = learnWindow;
             this.recognizeWindow = recognizeWindow;
         }
@@ -41,7 +41,7 @@ namespace LanguageRecognition.Service
 
         public void ShowPrepareWindow()
         {
-            samplesWindow.Show();
+            prepareWindow.Show();
         }
 
 

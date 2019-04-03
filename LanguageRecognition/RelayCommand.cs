@@ -4,6 +4,13 @@ using System.Windows.Input;
 
 namespace LanguageRecognition.View.ViewModel
 {
+    /// <summary>
+    /// RelayCommand is required implementation for service "Command Pattern"
+    /// used by binding button from XAML to MVVM.
+    /// </summary>
+    /// <remarks>
+    /// In this case, RecalCommand implementation is downloaded from NuGet maganer
+    /// </remarks>
     public class RelayCommand : ICommand
     {
         #region Fields

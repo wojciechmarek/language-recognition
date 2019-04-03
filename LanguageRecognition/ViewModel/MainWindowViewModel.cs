@@ -13,10 +13,6 @@ namespace LanguageRecognition.ViewModel
 {
     public class MainWindowViewModel
     {
-        #region EnumWindows
-        public enum ProgramWindows { Prepare, Train, Recognize }
-        #endregion
-
         #region ButtonCommands
 
         public ICommand ButtonPress { get; set; }
