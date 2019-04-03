@@ -15,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.Prepare
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.Recognize", "LanguageRecognition.Recognize\LanguageRecognition.Recognize.csproj", "{9A295FF6-AF13-4113-84E5-2C302085532E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRegognizion.Train", "LanguageRegognizion.Train\LanguageRegognizion.Train.csproj", "{30D8622A-D32C-4C4F-BA72-4F29D5535194}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRegognition.Train", "LanguageRegognizion.Train\LanguageRegognition.Train.csproj", "{30D8622A-D32C-4C4F-BA72-4F29D5535194}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.Test", "LanguageRecognition.Test\LanguageRecognition.Test.csproj", "{27108ACF-E9DB-41CF-98CD-B0C2B5EC0B38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{30D8622A-D32C-4C4F-BA72-4F29D5535194}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30D8622A-D32C-4C4F-BA72-4F29D5535194}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30D8622A-D32C-4C4F-BA72-4F29D5535194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27108ACF-E9DB-41CF-98CD-B0C2B5EC0B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27108ACF-E9DB-41CF-98CD-B0C2B5EC0B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27108ACF-E9DB-41CF-98CD-B0C2B5EC0B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27108ACF-E9DB-41CF-98CD-B0C2B5EC0B38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

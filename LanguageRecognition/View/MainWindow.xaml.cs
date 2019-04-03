@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LanguageRecognition.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace LanguageRecognition
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(MainWindowViewModel mainWindowViewModel)
         {
             InitializeComponent();
+            this.DataContext = mainWindowViewModel;
         }
     }
 }

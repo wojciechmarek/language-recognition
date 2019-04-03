@@ -9,6 +9,7 @@
         Title="Recognize Window" Height="400" Width="600" MinHeight="400" MinWidth="600"
         ResizeMode="CanResize"
         Background="#e5e5e5">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -30,7 +31,5 @@
             <Button Grid.Column="0" Margin="5" Content="Load ANN from"/>
             <TextBlock Grid.Column="1" Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" Text="asdaasdasdasdasdsdasdad"/>
         </Grid>
-        
     </Grid>
-
 </Window>
