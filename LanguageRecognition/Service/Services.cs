@@ -44,12 +44,10 @@ namespace LanguageRecognition.Service
             prepareWindow.Show();
         }
 
-
         public void ShowTrainWindow()
         {
             learnWindow.Show();
         }
-
 
         public void ShowRecognizeWindow()
         {

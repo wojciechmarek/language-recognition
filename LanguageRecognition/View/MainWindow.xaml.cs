@@ -26,5 +26,15 @@ namespace LanguageRecognition
             InitializeComponent();
             this.DataContext = mainWindowViewModel;
         }
+
+        /// <summary>
+        /// This method is invoked by CLR. We shutdown app process, because defalt is still running in background
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Application.Current.Shutdown();
+        }
     }
 }

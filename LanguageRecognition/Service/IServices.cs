@@ -9,7 +9,7 @@ namespace LanguageRecognition.Service
     /// <summary>
     /// Interface for injecting to ViewModel
     /// This interface is representing only Services for MainWindow
-    /// Rest interfaces(for PrepareSamples, Recognize, Treain) is in libraries
+    /// Rest interfaces(for PreparePrepare, Recognize, Trein) are in libraries
     /// </summary>
     public interface IServices
     {
