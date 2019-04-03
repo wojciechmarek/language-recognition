@@ -5,17 +5,17 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition", "LanguageRecognition\LanguageRecognition.csproj", "{151E69A1-D09E-4C19-8A7F-B8F8D9401E4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.PrepareSamples", "LanguageRecognition.PrepareSamples\LanguageRecognition.PrepareSamples.csproj", "{AE050943-0C50-43A8-AB80-3CA90966DB5A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.PrepareSamples.Test", "LanguageRecognition.PrepareSamples.Test\LanguageRecognition.PrepareSamples.Test.csproj", "{D8D93716-0417-4C16-AB96-0EDA46E13762}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.Train.Test", "LanguageRecognition.Train.Test\LanguageRecognition.Train.Test.csproj", "{D221F5A3-B3FA-4FAC-86AA-EBCECFDE0D20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.Recognize.Test", "LanguageRecognition.Recognize.Test\LanguageRecognition.Recognize.Test.csproj", "{95F23BB5-F44A-4A6B-8C6E-F292DD9C4D5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.Recognize", "LanguageRecognition.Recognize\LanguageRecognition.Recognize.csproj", "{C5381F36-1E23-4B1E-91B9-A5676FA344A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.PrepareSamples", "LanguageRecognition.PrepareSamples\LanguageRecognition.PrepareSamples.csproj", "{0AE49399-3D8D-4947-A50F-0D2013B44922}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.Train", "LanguageRecognition.Train\LanguageRecognition.Train.csproj", "{A1F857D5-0BD8-4196-9701-CE1952F5BC7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRecognition.Recognize", "LanguageRecognition.Recognize\LanguageRecognition.Recognize.csproj", "{9A295FF6-AF13-4113-84E5-2C302085532E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRegognizion.Train", "LanguageRegognizion.Train\LanguageRegognizion.Train.csproj", "{30D8622A-D32C-4C4F-BA72-4F29D5535194}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +27,6 @@ Global
 		{151E69A1-D09E-4C19-8A7F-B8F8D9401E4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{151E69A1-D09E-4C19-8A7F-B8F8D9401E4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{151E69A1-D09E-4C19-8A7F-B8F8D9401E4D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AE050943-0C50-43A8-AB80-3CA90966DB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AE050943-0C50-43A8-AB80-3CA90966DB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AE050943-0C50-43A8-AB80-3CA90966DB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AE050943-0C50-43A8-AB80-3CA90966DB5A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D8D93716-0417-4C16-AB96-0EDA46E13762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D8D93716-0417-4C16-AB96-0EDA46E13762}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8D93716-0417-4C16-AB96-0EDA46E13762}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,14 +39,18 @@ Global
 		{95F23BB5-F44A-4A6B-8C6E-F292DD9C4D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95F23BB5-F44A-4A6B-8C6E-F292DD9C4D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95F23BB5-F44A-4A6B-8C6E-F292DD9C4D5E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5381F36-1E23-4B1E-91B9-A5676FA344A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5381F36-1E23-4B1E-91B9-A5676FA344A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5381F36-1E23-4B1E-91B9-A5676FA344A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5381F36-1E23-4B1E-91B9-A5676FA344A1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1F857D5-0BD8-4196-9701-CE1952F5BC7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1F857D5-0BD8-4196-9701-CE1952F5BC7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1F857D5-0BD8-4196-9701-CE1952F5BC7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1F857D5-0BD8-4196-9701-CE1952F5BC7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE49399-3D8D-4947-A50F-0D2013B44922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE49399-3D8D-4947-A50F-0D2013B44922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE49399-3D8D-4947-A50F-0D2013B44922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE49399-3D8D-4947-A50F-0D2013B44922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A295FF6-AF13-4113-84E5-2C302085532E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A295FF6-AF13-4113-84E5-2C302085532E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A295FF6-AF13-4113-84E5-2C302085532E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A295FF6-AF13-4113-84E5-2C302085532E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30D8622A-D32C-4C4F-BA72-4F29D5535194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30D8622A-D32C-4C4F-BA72-4F29D5535194}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30D8622A-D32C-4C4F-BA72-4F29D5535194}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30D8622A-D32C-4C4F-BA72-4F29D5535194}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

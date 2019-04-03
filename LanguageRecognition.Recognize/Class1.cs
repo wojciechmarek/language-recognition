@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LanguageRecognition.Recognize.ViewModel
+namespace LanguageRecognition.Recognize
 {
-    public class MainWindowViewModel
+    public class Class1
     {
     }
 }
