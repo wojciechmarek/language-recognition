@@ -60,6 +60,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\LearnWindow.xaml.cs">
+      <DependentUpon>LearnWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RecognizeWindow.xaml.cs">
+      <DependentUpon>RecognizeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SamplesWindow.xaml.cs">
+      <DependentUpon>SamplesWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\LearnWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,6 +87,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\RecognizeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SamplesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
