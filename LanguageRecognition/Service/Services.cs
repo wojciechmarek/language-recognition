@@ -41,17 +41,35 @@ namespace LanguageRecognition.Service
 
         public void ShowPrepareWindow()
         {
-            prepareWindow.Show();
+            InvokeWindow(prepareWindow);
         }
 
         public void ShowTrainWindow()
         {
-            learnWindow.Show();
+            InvokeWindow(learnWindow);
         }
 
         public void ShowRecognizeWindow()
         {
-            recognizeWindow.Show();
+            InvokeWindow(recognizeWindow);
+        }
+
+        /// <summary>
+        /// Helper method to reduce redundance
+        /// </summary>
+        /// <param name="window">Window type</param>
+        public void InvokeWindow(Window window)
+        {
+            bool isActuallyVisible = window.IsVisible;
+
+            if (!isActuallyVisible)
+            {
+                window.Show();
+            }
+            else
+            {
+                window.Visibility = Visibility.Visible;
+            }
         }
 
         #endregion
