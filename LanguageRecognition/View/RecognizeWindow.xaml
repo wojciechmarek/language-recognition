@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageRecognition.View"
         mc:Ignorable="d"
-        Title="Recognize Window" Height="400" Width="600" MinHeight="400" MinWidth="600"
+        Title="Recognize language" Height="400" Width="600" MinHeight="400" MinWidth="600"
         ResizeMode="CanResize"
         Background="#e5e5e5">
 

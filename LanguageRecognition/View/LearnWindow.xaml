@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageRecognition.View"
         mc:Ignorable="d"
-        Title="Train Window" Height="300" Width="500" MinHeight="300" MinWidth="500"
+        Title="Train" Height="300" Width="500" MinHeight="300" MinWidth="500"
         ResizeMode="CanResize"
         Background="#e5e5e5">
     
