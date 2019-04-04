@@ -65,7 +65,8 @@ namespace LanguageRegognizion.Train.Service
             ParseDataFromSampleFile();
             CreateObservationsMatrix();
             CreateTargetsVector();
-
+            ConvertStringVectorToDoubleVector();
+            CountDependentVariables();
             CreateNeuralNetwork();
             LearnAnn();
 
@@ -112,7 +113,7 @@ namespace LanguageRegognizion.Train.Service
             {
                 var featureNames = parsedExamples.EnumerateRows(c => c != dependentVariableColumn).First().ColumnNameToIndex.Keys.ToArray();
 
-                var observations = parsedExamples.EnumerateRows(featureNames).ToF64Matrix();
+                observations = parsedExamples.EnumerateRows(featureNames).ToF64Matrix();
             }
             catch (Exception ex)
             {
@@ -126,18 +127,39 @@ namespace LanguageRegognizion.Train.Service
             try
             {
                 dependentVariableAsName = parsedExamples.EnumerateRows(dependentVariableColumn).ToStringVector();
-                dependentVariableAsNumber = parsedExamples.EnumerateRows(dependentVariableColumn).ToF64Vector()
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+        }
 
+        private void ConvertStringVectorToDoubleVector()
+        {
+            var uniqueValues = dependentVariableAsName.Distinct().ToArray();
+            var numberOfDependentItems = dependentVariableAsName.Count();
+            var dependentAsNumber = new double[numberOfDependentItems];
+            int helper = 0;
+
+            for (int i = 0; i < numberOfDependentItems; i++)
+            {
+                for (int k = 0; k < uniqueValues.Length; k++)
+                {
+                    if (string.Equals(dependentVariableAsName[i], uniqueValues[k]))
+                    {
+                        helper = k;
+                    }
+                }
+
+                dependentAsNumber[i] = helper;
+            }
+
+            dependentVariableAsNumber = dependentAsNumber;
         }
 
         private void CountDependentVariables()
         {
-            var outputCategories = dependentVariableAsName.Distinct().Count();
+            outputCategories = dependentVariableAsName.Distinct().Count();
         }
 
         private void CreateNeuralNetwork()
