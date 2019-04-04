@@ -72,8 +72,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="RaisePropertyChanged.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Service\IServices.cs" />
+    <Compile Include="ViewModel\PrepareWindowViewModel.cs" />
     <Compile Include="View\LearnWindow.xaml.cs">
       <DependentUpon>LearnWindow.xaml</DependentUpon>
     </Compile>
@@ -137,6 +139,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LanguageRecognition.PrepareSamples\LanguageRecognition.Prepare.csproj">
+      <Project>{0ae49399-3d8d-4947-a50f-0d2013b44922}</Project>
+      <Name>LanguageRecognition.Prepare</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

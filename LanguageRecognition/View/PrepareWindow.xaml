@@ -16,7 +16,7 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="0" Margin="10" FontSize="20" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"  materialDesign:HintAssist.Hint="Type or paste any text to create samples for neural network"/>
+        <TextBox Grid.Row="0" Margin="10" FontSize="20" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"  materialDesign:HintAssist.Hint="Type or paste any text to create samples for neural network" Text="{Binding LanguageSampleInput}"/>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -26,10 +26,10 @@
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Margin="5" Content="Save samples to"/>
-            <TextBlock Grid.Column="1" Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" Text="asdaasdasdasdasdsdasdad"/>
-            <TextBox Grid.Column="2" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Language label" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-            <Button Grid.Column="3" Margin="5" Content="CREATE SAMPLE"/>
+            <Button Grid.Column="0" Margin="5" Content="Save samples to" Command="{Binding PathToSaveSampleButtonPress}"/>
+            <TextBlock Grid.Column="1" Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding SavePath}"/>
+            <TextBox Grid.Column="2" Margin="5" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Language label" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding LanguageSampleLabel}"/>
+            <Button Grid.Column="3" Margin="5" Content="CREATE SAMPLE"  Command="{Binding CreateSampleButtonPress}"/>
         </Grid>
     </Grid>
 </Window>

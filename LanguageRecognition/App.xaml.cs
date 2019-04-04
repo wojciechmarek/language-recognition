@@ -10,6 +10,8 @@ using LanguageRecognition.ViewModel;
 using Castle.Windsor;
 using Castle.MicroKernel.Registration;
 using LanguageRecognition.View;
+using LanguageRecognition.Prepare.Interface;
+using LanguageRecognition.Prepare.Service;
 
 namespace LanguageRecognition
 {
@@ -39,10 +41,13 @@ namespace LanguageRecognition
             container.Register(Component.For<PrepareWindow>());
             container.Register(Component.For<LearnWindow>());
             container.Register(Component.For<RecognizeWindow>());
+
             container.Register(Component.For<MainWindowViewModel>());
+            container.Register(Component.For<PrepareWindowViewModel>());
 
             //Dependency injection(interface is injected)
             container.Register(Component.For<IServices>().ImplementedBy<Services>());
+            container.Register(Component.For<IPrepareService>().ImplementedBy<PrepareService>());
 
             //in easy way we can take reference to object registered earier
             var mainWindow = container.Resolve<MainWindow>();

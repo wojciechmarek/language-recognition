@@ -2,6 +2,7 @@
 using LanguageRecognition.PrepareSamples.ModuleException;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace LanguageRecognition.Prepare.Service
 
         //private fields
         private int[] countedEachLetter;
-        private string[] countedEachLetterInPercentage;
+        private double[] countedEachLetterInPercentage;
         private int totalLettersNumberInText;
 
         #endregion
@@ -31,7 +32,7 @@ namespace LanguageRecognition.Prepare.Service
         public void CreateSample()
         {
             countedEachLetter = new int[26];
-            countedEachLetterInPercentage = new string[26];
+            countedEachLetterInPercentage = new double[26];
             totalLettersNumberInText = 0;
 
             CheckLanguageLabel(languageLabel);
@@ -94,27 +95,25 @@ namespace LanguageRecognition.Prepare.Service
             for (int i = 0; i < countedEachLetter.Length; i++)
             {
                 double percent = countedEachLetter[i] / (double)totalLettersNumberInText;
-                countedEachLetterInPercentage[i] = Math.Round(percent, 3).ToString();
+                countedEachLetterInPercentage[i] = Math.Round(percent, 3);
             }
         }
 
         private void Save()
         {
-            using (FileStream fileStream = File.Open(pathToSaveLangSamples, FileMode.OpenOrCreate, FileAccess.Write))
-            { 
+            using (StreamWriter fileStream = File.AppendText(pathToSaveLangSamples))
+            {
                 StringBuilder sb = new StringBuilder();
 
                 for (int i = 0; i < countedEachLetterInPercentage.Length; i++)
                 {
-                    sb.Append(countedEachLetterInPercentage[i].ToString(CultureInfo.InvariantCulture));
+                    sb.Append(countedEachLetterInPercentage[i].ToString(CultureInfo.GetCultureInfo("en-US")));
                     sb.Append(";");
                 }
 
                 sb.Append(languageLabel);
-                sb.Append("\r\n");
 
-                Byte[] lineToSave = new UTF8Encoding(true).GetBytes(sb.ToString());
-                fileStream.Write(lineToSave, 0, lineToSave.Length);
+                fileStream.WriteLineAsync(sb.ToString());
             }
         }
 
