@@ -77,8 +77,6 @@ namespace LanguageRegognizion.Train.Service
 
         private void ParseDataFromSampleFile()
         {
-            AddHeaderToSamples();
-
             try
             {
                 parsedExamples = new CsvParser(() => new StreamReader(pathToGetSamples), separator: ';', hasHeader: true);
@@ -86,24 +84,6 @@ namespace LanguageRegognizion.Train.Service
             catch (Exception ex)
             {
                 throw new FileNotFoundException(ex.Message);
-            }
-        }
-    
-        private void AddHeaderToSamples()
-        {
-            string str;
-
-            using (StreamReader sreader = new StreamReader(pathToGetSamples))
-            {
-                str = sreader.ReadToEnd();
-            }
-
-            File.Delete(pathToGetSamples);
-
-            using (StreamWriter swriter = new StreamWriter(pathToGetSamples, false))
-            {
-                str = "a;b;c;d;e;f;g;h;i;j;k;l;m;n;o;p;q;r;s;t;u;v;w;x;y;z;language" + Environment.NewLine + str;
-                swriter.Write(str);
             }
         }
 

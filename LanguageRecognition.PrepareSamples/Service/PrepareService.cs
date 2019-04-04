@@ -101,7 +101,30 @@ namespace LanguageRecognition.Prepare.Service
 
         private void Save()
         {
-            using (StreamWriter fileStream = File.AppendText(pathToSaveLangSamples))
+            if (!File.Exists(pathToSaveLangSamples))
+            {
+                AddHeaderToSamples();
+                AddSampleToSamples();
+            }
+            else
+            {
+                AddSampleToSamples();
+            }
+           
+        }
+
+        private void AddHeaderToSamples()
+        {
+            using (StreamWriter swriter = File.AppendText(pathToSaveLangSamples))
+            {
+                var header = "a;b;c;d;e;f;g;h;i;j;k;l;m;n;o;p;q;r;s;t;u;v;w;x;y;z;language";
+                swriter.WriteLineAsync(header);
+            }
+        }
+
+        private void AddSampleToSamples()
+        {
+            using (StreamWriter swriter = File.AppendText(pathToSaveLangSamples))
             {
                 StringBuilder sb = new StringBuilder();
 
@@ -113,7 +136,7 @@ namespace LanguageRecognition.Prepare.Service
 
                 sb.Append(languageLabel);
 
-                fileStream.WriteLineAsync(sb.ToString());
+                swriter.WriteLineAsync(sb.ToString());
             }
         }
 
