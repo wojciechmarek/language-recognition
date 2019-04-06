@@ -1,5 +1,6 @@
 ﻿using LanguageRegognizion.Train.Interface;
 using LanguageRegognizion.Train.ModuleException;
+using Newtonsoft.Json;
 using SharpLearning.Containers.Matrices;
 using SharpLearning.InputOutput.Csv;
 using SharpLearning.Neural;
@@ -33,8 +34,9 @@ namespace LanguageRegognizion.Train.Service
         double[] dependentVariableAsNumber;
         string dependentVariableColumn = "language";
         int outputCategories;
+        string[] uniqueValues;
 
-        
+
         #endregion
 
         #region Methods
@@ -71,6 +73,7 @@ namespace LanguageRegognizion.Train.Service
             LearnAnn();
 
             SaveAnn();
+            AddLabelsToExportedAnnModel();
 
             return "";
         }
@@ -116,7 +119,7 @@ namespace LanguageRegognizion.Train.Service
 
         private void ConvertStringVectorToDoubleVector()
         {
-            var uniqueValues = dependentVariableAsName.Distinct().ToArray();
+            uniqueValues = dependentVariableAsName.Distinct().ToArray();
             var numberOfDependentItems = dependentVariableAsName.Count();
             var dependentAsNumber = new double[numberOfDependentItems];
             int helper = 0;
@@ -165,7 +168,17 @@ namespace LanguageRegognizion.Train.Service
         {
             annModel.Save(() => new StreamWriter(pathToSaveAnn));
         }
-        
+
+        private void AddLabelsToExportedAnnModel()
+        {
+            using (StreamWriter swriter = File.AppendText(pathToSaveAnn))
+            {
+                var header = JsonConvert.SerializeObject(uniqueValues);
+                swriter.WriteLine();
+                swriter.Write(header);
+            }
+        }
+
         #endregion
 
         #region CheckInputVariables
