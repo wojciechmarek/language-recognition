@@ -78,6 +78,7 @@
     <Compile Include="Service\IServices.cs" />
     <Compile Include="ViewModel\LearnWindowViewModel.cs" />
     <Compile Include="ViewModel\PrepareWindowViewModel.cs" />
+    <Compile Include="ViewModel\RecognizeWindowViewModel.cs" />
     <Compile Include="View\LearnWindow.xaml.cs">
       <DependentUpon>LearnWindow.xaml</DependentUpon>
     </Compile>
@@ -145,6 +146,10 @@
     <ProjectReference Include="..\LanguageRecognition.PrepareSamples\LanguageRecognition.Prepare.csproj">
       <Project>{0ae49399-3d8d-4947-a50f-0d2013b44922}</Project>
       <Name>LanguageRecognition.Prepare</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LanguageRecognition.Recognize\LanguageRecognition.Recognize.csproj">
+      <Project>{9a295ff6-af13-4113-84e5-2c302085532e}</Project>
+      <Name>LanguageRecognition.Recognize</Name>
     </ProjectReference>
     <ProjectReference Include="..\LanguageRegognizion.Train\LanguageRegognition.Train.csproj">
       <Project>{30d8622a-d32c-4c4f-ba72-4f29d5535194}</Project>

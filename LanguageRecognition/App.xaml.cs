@@ -14,6 +14,8 @@ using LanguageRecognition.Prepare.Interface;
 using LanguageRecognition.Prepare.Service;
 using LanguageRegognizion.Train.Interface;
 using LanguageRegognizion.Train.Service;
+using LanguageRecognition.Recognize.Interface;
+using LanguageRecognition.Recognize.Service;
 
 namespace LanguageRecognition
 {
@@ -47,11 +49,13 @@ namespace LanguageRecognition
             container.Register(Component.For<MainWindowViewModel>());
             container.Register(Component.For<PrepareWindowViewModel>());
             container.Register(Component.For<LearnWindowViewModel>());
+            container.Register(Component.For<RecognizeWindowViewModel>());
 
             //Dependency injection(interface is injected)
             container.Register(Component.For<IServices>().ImplementedBy<Services>());
             container.Register(Component.For<IPrepareService>().ImplementedBy<PrepareService>());
             container.Register(Component.For<ITrainService>().ImplementedBy<TrainService>());
+            container.Register(Component.For<IRecognizeService>().ImplementedBy<RecognizeService>());
 
             //in easy way we can take reference to object registered earier
             var mainWindow = container.Resolve<MainWindow>();

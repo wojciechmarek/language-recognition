@@ -53,17 +53,19 @@ namespace LanguageRecognition.Recognize.Service
 
         private void LoadAnn()
         {
-            try
+            if (!isAnnLoaded)
             {
-               annModel = ClassificationNeuralNetModel.Load(()=>new StringReader(pathToGetTrainedAnn));
-               isAnnLoaded = true;
-            }
-            catch (Exception ex)
-            {
-                isAnnLoaded = false;
-                throw new Exception(ex.Message);
-            }
-            
+                try
+                {
+                    annModel = ClassificationNeuralNetModel.Load(() => new StreamReader(pathToGetTrainedAnn));
+                    isAnnLoaded = true;
+                }
+                catch (Exception ex)
+                {
+                    isAnnLoaded = false;
+                    throw new Exception(ex.Message);
+                }
+            } 
         }
 
         private void CountLetterInText()
