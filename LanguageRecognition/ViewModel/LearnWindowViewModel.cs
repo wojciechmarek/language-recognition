@@ -72,6 +72,10 @@ namespace LanguageRecognition.ViewModel
             SaveAnn = Path.Combine(Environment.CurrentDirectory, "trained_ann.xml");
         }
 
+        #endregion
+
+        #region Methods
+
         private void LearnNetwork(object obj)
         {
             bool correctGetPath = CheckGetSamplePath(LoadSamples);
@@ -82,14 +86,17 @@ namespace LanguageRecognition.ViewModel
                 _trainService.GetPathOfLanguageSample(loadSamples);
                 _trainService.SetPathToSaveAnn(saveAnn);
 
-                _trainService.TrainNetwork();
+                try
+                {
+                    _trainService.TrainNetwork();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Train ANN issue", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                
             }
         }
-
-
-        #endregion
-
-        #region Methods
 
         private void GetAnnSavePath(object obj)
         {
