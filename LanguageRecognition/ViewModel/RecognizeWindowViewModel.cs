@@ -52,7 +52,7 @@ namespace LanguageRecognition.ViewModel
             set
             {
                 textToRecognize = value;
-                
+                InvokeRecognition(value);
             }
         }
 
@@ -89,7 +89,7 @@ namespace LanguageRecognition.ViewModel
             if (result == true)
             {
                 LoadAnnPath = dialog.FileName;
-                
+                UpdatePathWithAnn();
             }
         }
 
@@ -106,7 +106,7 @@ namespace LanguageRecognition.ViewModel
             
         }
 
-        private void InvokeRcognition(string textToRecognition)
+        private void InvokeRecognition(string textToRecognition)
         {
             try
             {

@@ -160,7 +160,7 @@ namespace LanguageRegognizion.Train.Service
 
         private void LearnAnn()
         {
-            var learner = new ClassificationNeuralNetLearner(neuralNetwork, iterations: 300, loss: new AccuracyLoss(), batchSize: 10);
+            var learner = new ClassificationNeuralNetLearner(neuralNetwork, iterations: 300, loss: new AccuracyLoss(), batchSize: 5);
             annModel = learner.Learn(observations, dependentVariableAsNumber);
         }
 

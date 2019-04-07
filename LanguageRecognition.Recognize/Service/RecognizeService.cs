@@ -1,5 +1,6 @@
 ﻿using LanguageRecognition.Recognize.Interface;
 using LanguageRecognition.Recognize.ModuleException;
+using Newtonsoft.Json;
 using SharpLearning.Neural.Models;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,9 @@ namespace LanguageRecognition.Recognize.Service
         int[] countedEachLetter;
         int totalLettersNumberInText;
         double[] countedEachLetterInPercentage;
-        double predictedLanguage;
+        string predictedLanguage;
+        string[] languagesLabels;
+        string allAnnModel;
         #endregion
 
         #region Methods
@@ -35,6 +38,7 @@ namespace LanguageRecognition.Recognize.Service
 
             pathToGetTrainedAnn = pathToGet;
 
+            GetDataFromImportedFile();
             LoadAnn();
         }
 
@@ -48,7 +52,30 @@ namespace LanguageRecognition.Recognize.Service
 
             RecognizeByModel();
 
-            return predictedLanguage.ToString();
+            if (string.IsNullOrWhiteSpace(textToRecognize))
+            {
+                return "";
+            }
+            return predictedLanguage;
+        }
+
+        private void GetDataFromImportedFile()
+        {
+            try
+            {
+                var allLines = new List<string>(System.IO.File.ReadAllLines(pathToGetTrainedAnn));
+                var readLabels = allLines.Last();
+                var numOfLines = allLines.Count;
+                allLines.RemoveAt(numOfLines-1);
+
+                allAnnModel = string.Join("", allLines);               
+
+                languagesLabels = JsonConvert.DeserializeObject<string[]>(readLabels);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         private void LoadAnn()
@@ -57,7 +84,7 @@ namespace LanguageRecognition.Recognize.Service
             {
                 try
                 {
-                    annModel = ClassificationNeuralNetModel.Load(() => new StreamReader(pathToGetTrainedAnn));
+                    annModel = ClassificationNeuralNetModel.Load(() => new StringReader(allAnnModel));
                     isAnnLoaded = true;
                 }
                 catch (Exception ex)
@@ -100,8 +127,10 @@ namespace LanguageRecognition.Recognize.Service
 
         private void RecognizeByModel()
         {
-            predictedLanguage = annModel.Predict(countedEachLetterInPercentage);
-        }
+            var aaaa = annModel.Predict(countedEachLetterInPercentage);
+            var predictedLanguageNumber = (int)aaaa;
+            predictedLanguage = languagesLabels[predictedLanguageNumber];
+         }
         #endregion
 
         #region CheckInputVariables
