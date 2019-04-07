@@ -59,7 +59,7 @@ namespace LanguageRegognizion.Train.Service
 
         #region Train
 
-        public string TrainNetwork()
+        public void TrainNetwork()
         {
             CheckGetSamplePath(pathToGetSamples);
             CheckSaveAnnPath(pathToSaveAnn);
@@ -74,8 +74,6 @@ namespace LanguageRegognizion.Train.Service
 
             SaveAnn();
             AddLabelsToExportedAnnModel();
-
-            return "";
         }
 
         private void ParseDataFromSampleFile()

@@ -27,6 +27,5 @@
 
         <TextBlock Grid.Row="0" Grid.Column="1" Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding LoadSamples}"/>
         <TextBlock Grid.Row="1" Grid.Column="1" Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding SaveAnn}"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding AnnInformations}"/>
     </Grid>
 </Window>

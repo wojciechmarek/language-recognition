@@ -44,16 +44,6 @@ namespace LanguageRecognition.ViewModel
             }
         }
 
-        private string annInformations;
-        public string AnnInformations
-        {
-            get { return annInformations; }
-            set
-            {
-                SetValue(ref annInformations, value);
-            }
-        }
-
         #endregion
 
         #region Constructor
@@ -88,13 +78,12 @@ namespace LanguageRecognition.ViewModel
 
                 try
                 {
-                    _trainService.TrainNetwork();
+                    Task.Run(() => _trainService.TrainNetwork());
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Train ANN issue", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
-                
             }
         }
 

@@ -10,6 +10,6 @@ namespace LanguageRegognizion.Train.Interface
     {
         void GetPathOfLanguageSample(string pathToGet);
         void SetPathToSaveAnn(string pathToSave);
-        string TrainNetwork();
+        void TrainNetwork();
     }
 }
