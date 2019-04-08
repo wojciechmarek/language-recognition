@@ -55,7 +55,7 @@ namespace LanguageRecognition.Service
         }
 
         /// <summary>
-        /// Helper method to reduce redundance
+        /// Helper method to reduce redundance, it process 3 methods above
         /// </summary>
         /// <param name="window">Window type</param>
         public void InvokeWindow(Window window)

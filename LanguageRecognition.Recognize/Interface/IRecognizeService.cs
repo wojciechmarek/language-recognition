@@ -8,7 +8,7 @@ namespace LanguageRecognition.Recognize.Interface
 {
     public interface IRecognizeService
     {
-        void GetPathOfTrainedAnn(string pathToGet);
+        void SetPathOfTrainedAnn(string pathToGet);
         string Recognize(string textToRecognize);
     }
 }

@@ -29,6 +29,9 @@ namespace LanguageRecognition.Prepare.Service
 
         #region CreateSample
 
+        /// <summary>
+        /// Method which is invoked in MVVM. This method contains all workflow to create language sample
+        /// </summary>
         public void CreateSample()
         {
             countedEachLetter = new int[26];
@@ -51,21 +54,18 @@ namespace LanguageRecognition.Prepare.Service
         public void SetLanguageLabel(string languageLabel)
         {
             CheckLanguageLabel(languageLabel);
-
             this.languageLabel = languageLabel;
         }
 
         public void SetPathToSaveSample(string pathToSave)
         {
             CheckPathToSave(pathToSave);
-
             this.pathToSaveLangSamples = pathToSave;
         }
 
         public void SetSampleTextToPrepareSample(StringBuilder sampleText)
         {
             CheckSampleText(sampleText);
-
             this.textForPrepareSample = sampleText;
         }
 
@@ -73,6 +73,12 @@ namespace LanguageRecognition.Prepare.Service
 
         #region Methods
 
+        /// <summary>
+        /// Method changes text to onlt small letters, next 
+        /// method counts number of letters a-z in sample text.
+        /// It also counts total number of a-z letters in text.
+        /// Spaces and other chars are not includes in result.
+        /// </summary>
         private void CountLettersInText()
         {
             string text = textForPrepareSample.ToString().ToLower();
@@ -90,6 +96,10 @@ namespace LanguageRecognition.Prepare.Service
             }
         }
 
+        /// <summary>
+        /// Method divides number of particular letter by total number of letters in text.
+        /// Next it rounds to 3 number of fractional digits.
+        /// </summary>
         private void ConvertLetterToPercentage()
         {
             for (int i = 0; i < countedEachLetter.Length; i++)
@@ -99,6 +109,11 @@ namespace LanguageRecognition.Prepare.Service
             }
         }
 
+        /// <summary>
+        /// Method saves samples to file.
+        /// It file not exist it first adds header and sample values.
+        /// If file exist it append only sample values.
+        /// </summary>
         private void Save()
         {
             if (!File.Exists(pathToSaveLangSamples))
@@ -113,6 +128,9 @@ namespace LanguageRecognition.Prepare.Service
            
         }
 
+        /// <summary>
+        /// Method creates and append header to output file.
+        /// </summary>
         private void AddHeaderToSamples()
         {
             using (StreamWriter swriter = File.AppendText(pathToSaveLangSamples))
@@ -122,6 +140,12 @@ namespace LanguageRecognition.Prepare.Service
             }
         }
 
+        /// <summary>
+        /// Methods append samples to output file.
+        /// </summary>
+        /// <remarks>
+        /// It uses en-US culture info to force dot(.) as decimal separator. It also works with invariant culture.
+        /// </remarks>
         private void AddSampleToSamples()
         {
             using (StreamWriter swriter = File.AppendText(pathToSaveLangSamples))
@@ -144,6 +168,10 @@ namespace LanguageRecognition.Prepare.Service
 
         #region CheckInputVariables
 
+        /// <summary>
+        /// Additioanal method to check content of languageLabel, throws: InvalidLanguageLabelException.
+        /// </summary>
+        /// <param name="languageLabel">Valid content</param>
         private void CheckLanguageLabel(string languageLabel)
         {
             if (string.IsNullOrEmpty(languageLabel))
@@ -152,6 +180,10 @@ namespace LanguageRecognition.Prepare.Service
             }
         }
 
+        /// <summary>
+        /// Additioanal method to check content of pathToSave, throws: InvalidPathException.
+        /// </summary>
+        /// <param name="pathToSave">Valid content</param>
         private void CheckPathToSave(string pathToSave)
         {
             if (string.IsNullOrEmpty(pathToSave))
@@ -160,6 +192,10 @@ namespace LanguageRecognition.Prepare.Service
             }
         }
 
+        /// <summary>
+        /// Additioanal method to check content of sampleText, throws: InvalidTextToTrainException.
+        /// </summary>
+        /// <param name="sampleText">Valid content</param>
         private void CheckSampleText(StringBuilder sampleText)
         {
             if (sampleText == null)
@@ -171,6 +207,7 @@ namespace LanguageRecognition.Prepare.Service
                 throw new InvalidTextToTrainException("Sample text is empty");
             }
         }
+
         #endregion
     }
 }

@@ -56,7 +56,6 @@ namespace LanguageRecognition.ViewModel
             }
         }
 
-
         #endregion
 
         #region Constructor
@@ -74,6 +73,13 @@ namespace LanguageRecognition.ViewModel
 
         #endregion
 
+        #region Methods
+
+        /// <summary>
+        /// Method connected to button command.
+        /// Method responsible for create & take path from load file window.
+        /// </summary>
+        /// <param name="obj">Not used</param>
         private void LoadAnn(object obj)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -86,6 +92,7 @@ namespace LanguageRecognition.ViewModel
 
             var result = dialog.ShowDialog();
 
+            //with every load new path we update path in services
             if (result == true)
             {
                 LoadAnnPath = dialog.FileName;
@@ -93,11 +100,14 @@ namespace LanguageRecognition.ViewModel
             }
         }
 
+        /// <summary>
+        /// Update path to trained ANN model in services
+        /// </summary>
         private void UpdatePathWithAnn()
         {
             try
             {
-                _recognizeService.GetPathOfTrainedAnn(LoadAnnPath);
+                _recognizeService.SetPathOfTrainedAnn(LoadAnnPath);
             }
             catch (Exception ex)
             {
@@ -106,6 +116,10 @@ namespace LanguageRecognition.ViewModel
             
         }
 
+        /// <summary>
+        /// Every change in field to recognize inkoves method to recognize in services.
+        /// </summary>
+        /// <param name="textToRecognition">Valid text from TextBox</param>
         private void InvokeRecognition(string textToRecognition)
         {
             try
@@ -119,5 +133,6 @@ namespace LanguageRecognition.ViewModel
             
         }
 
+        #endregion
     }
 }

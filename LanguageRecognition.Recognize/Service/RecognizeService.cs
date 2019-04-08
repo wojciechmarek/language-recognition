@@ -28,20 +28,16 @@ namespace LanguageRecognition.Recognize.Service
         string predictedLanguage;
         string[] languagesLabels;
         string allAnnModel;
+
         #endregion
 
-        #region Methods
+        #region Recognize
 
-        public void GetPathOfTrainedAnn(string pathToGet)
-        {
-            CheckGetTrainedAnnPath(pathToGet);
-
-            pathToGetTrainedAnn = pathToGet;
-
-            GetDataFromImportedFile();
-            LoadAnn();
-        }
-
+        /// <summary>
+        /// Method which is invoked in MVVM. This method contains all workflow to recognize text.
+        /// </summary>
+        /// <param name="textToRecognize">Text to recognize language</param>
+        /// <returns>Recognized language</returns>
         public string Recognize(string textToRecognize)
         {
             this.textToRecognize = textToRecognize;
@@ -59,6 +55,27 @@ namespace LanguageRecognition.Recognize.Service
             return predictedLanguage;
         }
 
+        #endregion
+
+        #region SetterMethod
+
+        public void SetPathOfTrainedAnn(string pathToGet)
+        {
+            CheckGetTrainedAnnPath(pathToGet);
+
+            pathToGetTrainedAnn = pathToGet;
+
+            GetDataFromImportedFile();
+            LoadAnn();
+        }
+
+        #endregion
+        
+        #region Methods
+
+        /// <summary>
+        /// Methods reads all lines of trained network file, saves it to private field and gets&remove line with languages labes.
+        /// </summary>
         private void GetDataFromImportedFile()
         {
             try
@@ -78,6 +95,9 @@ namespace LanguageRecognition.Recognize.Service
             }
         }
 
+        /// <summary>
+        /// Method reads trained model from pravate field and load it to ClassificationNeuralNetModel object.
+        /// </summary>
         private void LoadAnn()
         {
             if (!isAnnLoaded)
@@ -95,6 +115,9 @@ namespace LanguageRecognition.Recognize.Service
             } 
         }
 
+        /// <summary>
+        /// Same methods as in PrepareService. Count letters in input text.
+        /// </summary>
         private void CountLetterInText()
         {
             countedEachLetter = new int[26];
@@ -114,6 +137,9 @@ namespace LanguageRecognition.Recognize.Service
             }
         }
 
+        /// <summary>
+        /// Same methods as in PrepareService. Converts letters to percentages.
+        /// </summary>
         private void ConvertLetterToPercentage()
         {
             countedEachLetterInPercentage = new double[26];
@@ -125,16 +151,27 @@ namespace LanguageRecognition.Recognize.Service
             }
         }
 
+        /// <summary>
+        /// Methods puts array with letters in percentages to .Predict() method.
+        /// </summary>
+        /// <remarks>
+        /// On output we it returns double number of language.
+        /// So we must retrieve label value from languagesLabels. Labels we added on the end .xml file.
+        /// </remarks>
         private void RecognizeByModel()
         {
-            var aaaa = annModel.Predict(countedEachLetterInPercentage);
-            var predictedLanguageNumber = (int)aaaa;
-            predictedLanguage = languagesLabels[predictedLanguageNumber];
-         }
+            var predictAsNumber = (int)annModel.Predict(countedEachLetterInPercentage);
+            predictedLanguage = languagesLabels[predictAsNumber];
+        }
+
         #endregion
 
         #region CheckInputVariables
 
+        /// <summary>
+        /// Additioanal method to check content of trainedAnn path, throws: InvalidTrainedAnnPathException.
+        /// </summary>
+        /// <param name="trainedAnn">Valid content</param>
         private void CheckGetTrainedAnnPath(string trainedAnn)
         {
             if (string.IsNullOrEmpty(trainedAnn))

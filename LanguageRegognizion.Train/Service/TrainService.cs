@@ -39,26 +39,11 @@ namespace LanguageRegognizion.Train.Service
 
         #endregion
 
-        #region Methods
-
-        public void GetPathOfLanguageSample(string pathToGet)
-        {
-            CheckGetSamplePath(pathToGet);
-
-            pathToGetSamples = pathToGet;
-        }
-
-        public void SetPathToSaveAnn(string pathToSave)
-        {
-            CheckSaveAnnPath(pathToSave);
-
-            pathToSaveAnn = pathToSave;
-        }
-
-        #endregion
-
         #region Train
 
+        /// <summary>
+        /// Method which is invoked in MVVM. This method contains all workflow to train network.
+        /// </summary>
         public void TrainNetwork()
         {
             CheckGetSamplePath(pathToGetSamples);
@@ -76,6 +61,31 @@ namespace LanguageRegognizion.Train.Service
             AddLabelsToExportedAnnModel();
         }
 
+        #endregion
+
+        #region SetterMethods
+
+        public void GetPathOfLanguageSample(string pathToGet)
+        {
+            CheckGetSamplePath(pathToGet);
+
+            pathToGetSamples = pathToGet;
+        }
+
+        public void SetPathToSaveAnn(string pathToSave)
+        {
+            CheckSaveAnnPath(pathToSave);
+
+            pathToSaveAnn = pathToSave;
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Method reads all languages sample from file.
+        /// </summary>
         private void ParseDataFromSampleFile()
         {
             try
@@ -88,6 +98,9 @@ namespace LanguageRegognizion.Train.Service
             }
         }
 
+        /// <summary>
+        /// Method converts independent variables (all a-z, without language) to matrix of observations.
+        /// </summary>
         private void CreateObservationsMatrix()
         {
             try
@@ -103,6 +116,9 @@ namespace LanguageRegognizion.Train.Service
 
         }
 
+        /// <summary>
+        /// Method converts dependent variables (language) to vector of string.
+        /// </summary>
         private void CreateTargetsVector()
         {
             try
@@ -115,6 +131,12 @@ namespace LanguageRegognizion.Train.Service
             }
         }
 
+        /// <summary>
+        /// Method convert language labels to unique numbers
+        /// </summary>
+        /// <remarks>
+        /// Learn Method in ANN can not parse strings to output neurals, so we must send numbers to it.
+        /// </remarks>
         private void ConvertStringVectorToDoubleVector()
         {
             uniqueValues = dependentVariableAsName.Distinct().ToArray();
@@ -138,11 +160,22 @@ namespace LanguageRegognizion.Train.Service
             dependentVariableAsNumber = dependentAsNumber;
         }
 
+        /// <summary>
+        /// Method count how many dirrent languages we have in samples. It removes duclicates.
+        /// </summary>
         private void CountDependentVariables()
         {
             outputCategories = dependentVariableAsName.Distinct().Count();
         }
 
+        /// <summary>
+        /// Method creates neural network.
+        /// </summary>
+        /// <remarks>
+        /// Neural network has 26 input neurals, 10 neurals in hidden layer, and various number of output neurals.
+        /// Dropout is a regularization technique patented by Google for reducing overfitting in neural networks by preventing complex co-adaptations on training data.
+        /// Default activation function in neurals in ReLU.
+        /// </remarks>
         private void CreateNeuralNetwork()
         {
             neuralNetwork = new NeuralNet();
@@ -156,17 +189,27 @@ namespace LanguageRegognizion.Train.Service
             neuralNetwork.Add(new SoftMaxLayer(outputCategories));
         }
 
+        /// <summary>
+        /// Method trains created earlier network. Learner requires minimum 5 samples of languages(=batchSize)[more=better]
+        /// </summary>
         private void LearnAnn()
         {
             var learner = new ClassificationNeuralNetLearner(neuralNetwork, iterations: 300, loss: new AccuracyLoss(), batchSize: 5);
             annModel = learner.Learn(observations, dependentVariableAsNumber);
         }
 
+        /// <summary>
+        /// Method saves trained model to file.
+        /// </summary>
         private void SaveAnn()
         {
             annModel.Save(() => new StreamWriter(pathToSaveAnn));
         }
 
+        /// <summary>
+        /// Additional functionality, it append on the end of trained model file text version of unique labels.
+        /// Model can return only number on output, so we have not any information about names of languages in recognition module.
+        /// </summary>
         private void AddLabelsToExportedAnnModel()
         {
             using (StreamWriter swriter = File.AppendText(pathToSaveAnn))
@@ -181,6 +224,10 @@ namespace LanguageRegognizion.Train.Service
 
         #region CheckInputVariables
 
+        /// <summary>
+        /// Additioanal method to check content of pathToGet, throws: InvalidGetSamplesPathException.
+        /// </summary>
+        /// <param name="pathToGet">Valid content</param>
         private void CheckGetSamplePath(string pathToGet)
         {
             if (string.IsNullOrEmpty(pathToGet))
@@ -189,6 +236,10 @@ namespace LanguageRegognizion.Train.Service
             }
         }
 
+        /// <summary>
+        /// Additioanal method to check content of pathToSave, throws: InvalidSaveAnnPathException.
+        /// </summary>
+        /// <param name="pathToSave">Valid content</param>
         private void CheckSaveAnnPath(string pathToSave)
         {
             if (string.IsNullOrEmpty(pathToSave))
@@ -197,6 +248,10 @@ namespace LanguageRegognizion.Train.Service
             }
         }
 
+        /// <summary>
+        /// Additioanal method to check number of categories, throws: InvalidNumberOfCategoriesException.
+        /// </summary>
+        /// <param name="categories">Valid amount</param>
         private void CheckNumberOfCategories(int categories)
         {
             if (categories <= 1)

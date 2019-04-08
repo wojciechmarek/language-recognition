@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace LanguageRecognition
 {
+    /// <summary>
+    /// Class needed to have ability refresh controls in UI.
+    /// Every raise of event PropertyChanged will refresh controls.
+    /// It used in set block in bindable properties in MVVMs.
+    /// </summary>
     public class RaisePropertyChanged : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

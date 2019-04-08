@@ -34,6 +34,10 @@ namespace LanguageRecognition.ViewModel
 
         #region Methods
 
+        /// <summary>
+        /// Method connected to button command. It invokes appropriate window.
+        /// </summary>
+        /// <param name="obj">Value from CommandParameter in XAML</param>
         private void ShowWindow(object obj)
         {
             switch (obj.ToString())
@@ -57,5 +61,4 @@ namespace LanguageRecognition.ViewModel
 
         #endregion
     }
-
 }

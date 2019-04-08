@@ -20,7 +20,7 @@ namespace LanguageRecognition.Recognize.Test.ServiceTest
 
             Assert.Throws<InvalidTrainedAnnPathException>(() =>
             {
-                recognizeService.GetPathOfTrainedAnn(string.Empty);
+                recognizeService.SetPathOfTrainedAnn(string.Empty);
             });
         }
 
@@ -31,7 +31,7 @@ namespace LanguageRecognition.Recognize.Test.ServiceTest
 
             Assert.Throws<InvalidTrainedAnnPathException>(() =>
             {
-                recognizeService.GetPathOfTrainedAnn(null);
+                recognizeService.SetPathOfTrainedAnn(null);
             });
         }
     }

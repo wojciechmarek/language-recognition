@@ -66,6 +66,10 @@ namespace LanguageRecognition.ViewModel
 
         #region Methods
 
+        /// <summary>
+        /// Method connected to LEARN button command. It invokes method train from services.
+        /// </summary>
+        /// <param name="obj">Not used</param>
         private void LearnNetwork(object obj)
         {
             bool correctGetPath = CheckGetSamplePath(LoadSamples);
@@ -87,6 +91,10 @@ namespace LanguageRecognition.ViewModel
             }
         }
 
+        /// <summary>
+        /// Method responsible for create & take path from save file window. Connected to button command.
+        /// </summary>
+        /// <param name="obj"></param>
         private void GetAnnSavePath(object obj)
         {
             SaveFileDialog dialog = new SaveFileDialog();
@@ -104,6 +112,10 @@ namespace LanguageRecognition.ViewModel
             }
         }
 
+        /// <summary>
+        /// Method responsible for create & take path from load file window. Connected to button command.
+        /// </summary>
+        /// <param name="obj"></param>
         private void GetSamplePath(object obj)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -122,6 +134,11 @@ namespace LanguageRecognition.ViewModel
             }
         }
 
+        /// <summary>
+        /// Additional methods for check value of path
+        /// </summary>
+        /// <param name="savePath">Path</param>
+        /// <returns></returns>
         private bool CheckSaveAnnPath(string savePath)
         {
             if (string.IsNullOrEmpty(savePath))
@@ -133,6 +150,11 @@ namespace LanguageRecognition.ViewModel
             return true;
         }
 
+        /// <summary>
+        /// Additional methods for check value of path
+        /// </summary>
+        /// <param name="savePath">Path</param>
+        /// <returns></returns>
         private bool CheckGetSamplePath(string savePath)
         {
             if (string.IsNullOrEmpty(savePath))

@@ -4,6 +4,9 @@ using System.Windows.Input;
 
 namespace LanguageRecognition.View.ViewModel
 {
+    /// <summary>
+    /// NuGet package. It gives service to react for buttons commands.
+    /// </summary>
     public class RelayCommand : ICommand
     {
         #region Fields

@@ -67,6 +67,11 @@ namespace LanguageRecognition.ViewModel
 
         #region Methods
 
+        /// <summary>
+        /// Method connected to button command.
+        /// It uses builder methods to initialize values in services and invokes create process.
+        /// </summary>
+        /// <param name="obj">Not used</param>
         private void CreateSample(object obj)
         {
             bool correctLabel = CheckLanguageLabel(LanguageSampleLabel);
@@ -85,13 +90,17 @@ namespace LanguageRecognition.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Prepare Errpr", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show(ex.Message, "Prepare Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
 
 
             }
         }
 
+        /// <summary>
+        /// Method responsible for create & take path from save file window. Connected to button command.
+        /// </summary>
+        /// <param name="obj">Not used</param>
         private void ChangeSavePath(object obj)
         {
             SaveFileDialog dialog = new SaveFileDialog();
@@ -109,6 +118,11 @@ namespace LanguageRecognition.ViewModel
             }
         }
 
+        /// <summary>
+        /// Additional method to check content of language label
+        /// </summary>
+        /// <param name="languageLabel">Language name</param>
+        /// <returns>True if label is not null or empty</returns>
         private bool CheckLanguageLabel(string languageLabel)
         {
             if (string.IsNullOrEmpty(languageSampleLabel))
@@ -120,6 +134,11 @@ namespace LanguageRecognition.ViewModel
             return true;
         }
 
+        /// <summary>
+        /// Additional method to check content of sample text
+        /// </summary>
+        /// <param name="sampleText">Sample text content</param>
+        /// <returns>True if content is not null or empty</returns>
         private bool CheckLanguageSample(string sampleText)
         {
             if (string.IsNullOrEmpty(languageSampleLabel))
@@ -131,11 +150,16 @@ namespace LanguageRecognition.ViewModel
             return true;
         }
 
+        /// <summary>
+        /// Additional method to check content of path to save
+        /// </summary>
+        /// <param name="savePath">Sample text content</param>
+        /// <returns>True if sample text is not null or empty</returns>
         private bool CheckSavePath(string savePath)
         {
             if (string.IsNullOrEmpty(savePath))
             {
-                MessageBox.Show("Save path can not be empty", "Save Parh", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("Save path can not be empty", "Save Path", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
 
