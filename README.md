@@ -2,13 +2,13 @@
 Language Recognition by Artificial Neural Network
 
 ## About
-Application is based on WPF technology with Material Design controls. Applied also Model-View-ViewModel pattern with Dependency Injection.
+Application based on WPF technology with Material Design controls theme. Applied also Model-View-ViewModel pattern with Dependency Injection.
 
 
 ## How it works
 One of the most easiest method of detecting language is recognition by counting the frequency of letters in text. Application consist of 3 modules: 
 - Prepare text samples
-- Load samples to learner and save model
+- Load samples to learn and save model
 - Recognize new text by trained model
 
 
@@ -26,7 +26,7 @@ Prepare window for preparing examples of text from different languages. Every CR
 </p>
 
 ### Train Window
-Train window allows load samples of languages and save trained model in specific locations.
+Train window allows load samples of languages and save trained model in specific location.
 <p align="center">
   <img width="auto" height="340" alt="Train Window" src="https://user-images.githubusercontent.com/27026036/55724265-56dd6200-5a0b-11e9-94cd-98a30f2363f4.PNG">
 </p>
@@ -46,7 +46,7 @@ Recognize window recognizes input text based on the following model of trained A
 - NUnit 
 
 ## Samples
-Samples of 5 languages and trained nnetwork basen on that file are available in Samples directory.
+Samples of 5 languages and trained network based on that file are available in Samples directory.
 
 ## Requirements
 - Windows
