@@ -23,16 +23,20 @@ Later, after providing a new text, we have to programmatically count the amount 
 
 ## Screenshots
 
-- Main window view - shows 3 modules.
+- Main window view - shows 3 modules:
+
   ![main](https://user-images.githubusercontent.com/27026036/55724267-56dd6200-5a0b-11e9-93d2-4c426a817d8b.PNG)
 
 - Prepare window view - allows preparing examples from different languages. Every CREATE SAMPLE press will generate a new file or will append to existing file percentage values of letters. Texts in the given language should have the same label:
+
   ![prepare](https://user-images.githubusercontent.com/27026036/55724264-5644cb80-5a0b-11e9-9d5d-7b180cd27a50.PNG)
 
 - Train window view - allows loading samples of languages and saving the trained model in a specific location:
+
   ![train](https://user-images.githubusercontent.com/27026036/55724265-56dd6200-5a0b-11e9-94cd-98a30f2363f4.PNG)
 
 - Recognize window view - allows recognizing input text based on the following model of trained Artificial Neural Network:
+
   ![recognize](https://user-images.githubusercontent.com/27026036/55724266-56dd6200-5a0b-11e9-96d4-bdb69ffbdf98.PNG)
 
 ## Used libraries
