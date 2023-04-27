@@ -13,7 +13,7 @@ One of the easiest methods of detecting language is recognition by counting the 
 - in the Polish language is popular a letter: `w`
 - in the English language is popular a letter: `h`
 
-Here is a screenshot from an unknown source found somewhere on the Internet (Dear Author! - forgive me 🥹) showing the distribution of a letter in Polish, English, and french:
+Here is a screenshot from an unknown source found somewhere on the Internet (Dear Author! - forgive me 🥹) showing the distribution of a letter in polish, english, and french:
 
 ![letters](https://user-images.githubusercontent.com/27026036/206008339-20b6db47-1f1f-4e28-921c-37e43b92774f.png)
 
